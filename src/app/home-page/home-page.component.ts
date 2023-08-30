@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EventsProvider } from 'src/providers/events'
 
 @Component({
   selector: 'app-home-page',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
-  public array = [1,2,3,4,5,6,7,8,9,10]
+  constructor(public eventsProvider: EventsProvider) { }
+  public events 
   ngOnInit() {
+    this.eventsProvider.getEvents().then(result => {
+      this.events =  result
+    })
   }
 
 }
