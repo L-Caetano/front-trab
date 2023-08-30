@@ -9,7 +9,7 @@ import { EventsProvider } from 'src/providers/events'
 export class HomePageComponent implements OnInit {
 
   constructor(public eventsProvider: EventsProvider) { }
-  public events 
+  public events
   ngOnInit() {
     this.eventsProvider.getEvents().then(result => {
       this.events =  result
