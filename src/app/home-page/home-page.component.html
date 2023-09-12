@@ -7,15 +7,36 @@
  <h4>Lista de eventos:</h4>
      </div>
 <hr>
+<div class="row"> 
+  <div class="col"></div>
+  <div class="col">
+    <input type="text" (keyup)="setFiltro()" class="form-control" placeholder='Pesquisar...' [(ngModel)]="search">
+  </div>
+  <div class="col"></div>
+</div>
+<hr>
 <div class="row" style="justify-content: center;">
-  <div class="card" style="width: 18rem;" *ngFor="let item of events">
+ 
+  <div class="spinner-border" role="status" *ngIf="loader == true">
+    <span class="sr-only">Loading...</span>
+  </div>
+
+  <div class="card" style="width: 18rem; padding: 5px 5px 5px 5px;" *ngFor="let item of filteredEvents" >
   <img class="card-img-top" src="../assets/chamada-oral-ufsm.jpg" alt="Card image cap">
   <div class="card-body">
     <h4 class="card-title">{{ item.nome }}</h4> 
-    <h5>{{ item.data }} </h5>
+    <h5>{{ item.data | date }} </h5>
     <p class="card-text">{{ item.descricao }}</p>
+  </div>  
     <a href="#" class="btn btn-primary">Acessar</a>
-  </div>
+
 </div>
+<div class="row">
+  <div class="col">
+<div class="alert alert-secondary" *ngIf="filteredEvents.length == 0 && loader == false" role="alert">
+ Nenhum resultado encontrado...
+</div></div></div>
 </div>
+
+
 
