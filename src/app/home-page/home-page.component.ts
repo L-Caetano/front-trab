@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { EventsProvider } from 'src/providers/events'
+import { EventViewComponent } from '../event-view/event-view.component';
+import { Router } from '@angular/router';
+
+//import {NgbActiveModal,NgbModalOptions,NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-home-page',
@@ -8,7 +12,7 @@ import { EventsProvider } from 'src/providers/events'
 })
 export class HomePageComponent implements OnInit {
 
-  constructor(public eventsProvider: EventsProvider) { }
+  constructor(public eventsProvider: EventsProvider,private router: Router) { }
   public events
   public search
   public filteredEvents = []
@@ -21,13 +25,22 @@ export class HomePageComponent implements OnInit {
     })
     //this.filteredEvents = this.events
   }
-
+  routToEvent(id){
+    console.log(id)
+    this.router.navigate(['/teste/'+id]
+    )
+  }
   setFiltro(){
     this.loader=true
     this.filteredEvents =  this.filtro()
     this.loader=false;
 
   }
+
+
+
+
+
   filtro(): any[] {
     //console.log(this.search)
     if (!this.events) {

@@ -28,7 +28,7 @@
     <h5>{{ item.data | date }} </h5>
     <p class="card-text">{{ item.descricao }}</p>
   </div>  
-    <a href="#" class="btn btn-primary">Acessar</a>
+    <a  (click)="routToEvent(item.id)" class="btn btn-primary">Acessar</a>
 
 </div>
 <div class="row">

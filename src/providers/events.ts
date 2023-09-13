@@ -22,4 +22,19 @@ export class EventsProvider {
       
           });
     }
+
+    getEvent(id){
+      return new Promise((resolve, reject) => {
+          console.log(environment.api + this.apiEvent)
+          this.http.get(environment.api +   this.apiEvent+ "/show/"+ id)
+            .subscribe((result) => {
+              console.log(result)
+                resolve(result);
+              },
+              (error) => {
+                reject(error);
+              });
+    
+        });
+  }
 }
