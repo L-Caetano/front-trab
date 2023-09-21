@@ -1,4 +1,4 @@
-<body > 
+<body >
 <div class="row"  style="text-align: center; justify-content: center; padding-top: 2%;">
 
 
@@ -10,8 +10,8 @@
             <div class="form-group"  >
               <label for="exampleInputEmail1">Email address</label>
               <input type="email" class="form-control" formControlName="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-            </div> 
-         </div>             
+            </div>
+         </div>
             <div class="col-3"></div>
         </div>
          <div class="row ">
@@ -21,12 +21,32 @@
               <label for="exampleInputPassword1">Password</label>
               <input type="password" class="form-control" formControlName="password" id="exampleInputPassword1" placeholder="Password">
             </div>
-        </div>                
+        </div>
         <div class="col-3"></div>
             </div>
             <br>
-            <button type="submit" (click)="submited()" class="btn btn-primary">Submit</button>
+            <button type="submit" (click)="submited()" *ngIf="loader == false" class="btn btn-primary">Submit</button>
+
+            <div class="spinner-border" role="status" *ngIf="loader == true">
+              <span class="sr-only">Loading...</span>
+            </div>
 
           </form>
+
+
 </div>
+<div class="row" *ngIf="sucesso">
+  <div class="col"></div>
+  <div class="col alert alert-success" role="alert">
+         {{sucesso}}
+        </div>
+        <div class="col"></div>
+
+</div><div class="row" *ngIf="erro">
+  <div class="col"></div>
+ <div class="col alert alert-danger" role="alert">
+         {{erro.error.message}}
+        </div>
+        <div class="col"></div>
+      </div>
 </body>

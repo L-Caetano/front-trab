@@ -12,6 +12,10 @@ import { EventViewComponent } from './event-view/event-view.component';
 import { LoginComponent } from './login/login/login.component';
 import { CadastroComponent } from './login/cadastro/cadastro.component';
 import { UserProvider } from 'src/providers/user';
+import { Snackbar } from "src/providers/snackbar";
+import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from '@angular/material/snack-bar';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'; // this is needed!
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,10 +34,14 @@ import { UserProvider } from 'src/providers/user';
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule
   ],
   providers: [EventsProvider,
-    UserProvider],
+    UserProvider,
+    Snackbar,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
