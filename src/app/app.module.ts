@@ -15,7 +15,7 @@ import { UserProvider } from 'src/providers/user';
 import { Snackbar } from "src/providers/snackbar";
 import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from '@angular/material/snack-bar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'; // this is needed!
-
+import { authLogin } from 'src/providers/authLogin';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +41,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'; //
   providers: [EventsProvider,
     UserProvider,
     Snackbar,
+    authLogin
   ],
   bootstrap: [AppComponent]
 })
