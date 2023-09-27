@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EventsProvider } from 'src/providers/events'
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2'
 
 //import {NgbActiveModal,NgbModalOptions,NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
@@ -11,7 +13,7 @@ import { EventsProvider } from 'src/providers/events'
 })
 export class EventViewComponent implements OnInit {
 
-  constructor(private activedRoute: ActivatedRoute,public eventsProvider: EventsProvider) { }
+  constructor(private activedRoute: ActivatedRoute,public eventsProvider: EventsProvider, private router: Router) { }
   public loader = true
   public event
   ngOnInit() {
@@ -24,5 +26,22 @@ export class EventViewComponent implements OnInit {
     this.loader=false;
   })
   }
+  editar(){
+    let id =  this.activedRoute.snapshot.paramMap.get('id');
+    this.router.navigate(['/editarEvento/'+id])
+  }
+  excluir(){
+    Swal.fire({
+      title: 'Queres realmente deletar esté evento?',
 
+      showCancelButton: true,
+      confirmButtonText: 'Deletar',
+      denyButtonText: `Cancelar`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire('Deletado!', '', 'success')
+      }
+    })
+  }
 }

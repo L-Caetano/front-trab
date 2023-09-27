@@ -12,6 +12,11 @@
         <a class="nav-link" href="#">Home </a>
       </li>
       <li class="nav-item" *ngIf="!authLogin.isLogged()">
+        <a class="nav-link" href="/criarEvento">
+        Cadastrar Evento
+       </a>
+   </li>
+      <li class="nav-item"  *ngIf="!authLogin.isLogged()">
        <a class="nav-link" href="/login">
           Login
          </a>

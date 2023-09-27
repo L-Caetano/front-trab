@@ -4,6 +4,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { EventViewComponent } from './event-view/event-view.component';
 import { CadastroComponent } from './login/cadastro/cadastro.component';
 import { LoginComponent } from './login/login/login.component';
+import { CriarEventoComponent } from './eventos/criar-evento/criar-evento.component';
+import { EditarEventoComponent } from './eventos/editar-evento/editar-evento.component';
 
 
 const routes: Routes = [
@@ -12,13 +14,21 @@ const routes: Routes = [
 
   },
   {
-    path: 'teste/:id', component: EventViewComponent
+    path: 'eventView/:id', component: EventViewComponent
   },
   {
     path: 'cadastrar', component: CadastroComponent
   },
   {
     path: 'login', component: LoginComponent
+  }
+  ,
+  {
+    path: 'criarEvento', component: CriarEventoComponent
+  }
+  ,
+  {
+    path: 'editarEvento/:id', component: EditarEventoComponent
   }
 ];
 

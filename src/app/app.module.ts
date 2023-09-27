@@ -16,6 +16,8 @@ import { Snackbar } from "src/providers/snackbar";
 import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from '@angular/material/snack-bar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'; // this is needed!
 import { authLogin } from 'src/providers/authLogin';
+import { CriarEventoComponent } from './eventos/criar-evento/criar-evento.component';
+import { EditarEventoComponent } from './eventos/editar-evento/editar-evento.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +26,9 @@ import { authLogin } from 'src/providers/authLogin';
     FooterComponent,
     EventViewComponent,
     LoginComponent,
-    CadastroComponent
+    CadastroComponent,
+    CriarEventoComponent,
+    EditarEventoComponent
   ],
   entryComponents: [
     EventViewComponent

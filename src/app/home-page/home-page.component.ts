@@ -27,7 +27,7 @@ export class HomePageComponent implements OnInit {
   }
   routToEvent(id){
     console.log(id)
-    this.router.navigate(['/teste/'+id]
+    this.router.navigate(['/eventView/'+id]
     )
   }
   setFiltro(){
