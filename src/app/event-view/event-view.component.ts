@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { EventsProvider } from 'src/providers/events'
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
+import { authLogin } from 'src/providers/authLogin'
 
 //import {NgbActiveModal,NgbModalOptions,NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
@@ -13,7 +14,7 @@ import Swal from 'sweetalert2'
 })
 export class EventViewComponent implements OnInit {
 
-  constructor(private activedRoute: ActivatedRoute,public eventsProvider: EventsProvider, private router: Router) { }
+  constructor(private activedRoute: ActivatedRoute,public eventsProvider: EventsProvider, private router: Router, public authLogin: authLogin) { }
   public loader = true
   public event
   ngOnInit() {

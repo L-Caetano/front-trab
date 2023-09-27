@@ -3,7 +3,7 @@
   <div class="row" style=" text-align: center; padding-top: 2%;">
 <div class="row">
  <h2> {{ event.nome }}</h2> </div>
- <div class="col"><button class="btn btn-primary" (click)="editar()">Editar Evento</button>&nbsp;
+ <div class="col" *ngIf="authLogin.isLogged()"><button class="btn btn-primary" (click)="editar()">Editar Evento</button>&nbsp;
   <button class="btn btn-danger"  (click)="excluir()">Excluir Evento</button></div>
 
 
