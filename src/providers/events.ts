@@ -19,7 +19,7 @@ export class EventsProvider {
                 (error) => {
                   reject(error);
                 });
-      
+
           });
     }
 
@@ -34,7 +34,49 @@ export class EventsProvider {
               (error) => {
                 reject(error);
               });
-    
+
         });
+  }
+  deleteEvent(id){
+    return new Promise((resolve, reject) => {
+      console.log(environment.api + this.apiEvent)
+      this.http.delete(environment.api +   this.apiEvent+ "/destroy/"+ id)
+        .subscribe((result) => {
+          console.log(result)
+            resolve(result);
+          },
+          (error) => {
+            reject(error);
+          });
+
+    });
+  }
+  postEvent(body){
+    return new Promise((resolve, reject) => {
+      console.log(environment.api, body )
+      this.http.post(environment.api + this.apiEvent+'/store', body)
+        .subscribe((result) => {
+          console.log(result)
+            resolve(result);
+          },
+          (error) => {
+            reject(error);
+          });
+
+    });
+  }
+  putEvent(body,id){
+    return new Promise((resolve, reject) => {
+      console.log(environment.api, body )
+      this.http.post(environment.api + this.apiEvent+'/update/'+id, body)
+        .subscribe((result) => {
+          console.log(result)
+            resolve(result);
+          },
+          (error) => {
+            reject(error);
+          });
+
+    });
   }
 }
