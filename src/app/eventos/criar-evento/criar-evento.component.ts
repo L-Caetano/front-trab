@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-
+import { EventsProvider } from 'src/providers/events';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-criar-evento',
   templateUrl: './criar-evento.component.html',
@@ -8,7 +10,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class CriarEventoComponent implements OnInit {
 
-  constructor() { }
+  constructor(public eventsProvider: EventsProvider,) { }
   formulario
   loader = false
   erro = null
@@ -29,21 +31,21 @@ export class CriarEventoComponent implements OnInit {
     this.sucesso = null
     this.loader=true
     console.log(this.formulario.value)
-    /* this.userProvider.postLogUser( this.formulario.value).then((result: any) => {
+     this.eventsProvider.postEvent( this.formulario.value).then((result: any) => {
      // this.event =  result
       console.log(result)
-      this.authLogin.setSession(result.token, result.expires_at)
+    //  this.authLogin.setSession(result.token, result.expires_at)
       //this.filteredEvents =  result
       this.sucesso=result
      // this.loader = false
       Swal.fire({
         position: 'top-end',
         icon: 'success',
-        title: 'Você foi logado com sucesso',
+        title: 'Evento Criado com Sucesso',
         showConfirmButton: false,
         timer: 1500
       }).then(ant => {
-        this.router.navigate(["/"]);
+       // this.router.navigate(["/"]);
       })
     }).catch(error => {
       console.log("teste2",error)
@@ -52,6 +54,6 @@ export class CriarEventoComponent implements OnInit {
 
      // this.snackBar.openLong('Não foi possível modificar: O período de trabalho é inválido!', 'erro');
 
-    })*/
+    })
   }
 }

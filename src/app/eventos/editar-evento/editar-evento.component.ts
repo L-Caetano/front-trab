@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { EventsProvider } from 'src/providers/events'
+import Swal from 'sweetalert2'
+
 @Component({
   selector: 'app-editar-evento',
   templateUrl: './editar-evento.component.html',
@@ -42,29 +44,29 @@ export class EditarEventoComponent implements OnInit {
     this.sucesso = null
     this.loader=true
     console.log(this.formulario.value)
-    /* this.userProvider.postLogUser( this.formulario.value).then((result: any) => {
-     // this.event =  result
-      console.log(result)
-      this.authLogin.setSession(result.token, result.expires_at)
-      //this.filteredEvents =  result
-      this.sucesso=result
-     // this.loader = false
-      Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Você foi logado com sucesso',
-        showConfirmButton: false,
-        timer: 1500
-      }).then(ant => {
-        this.router.navigate(["/"]);
-      })
-    }).catch(error => {
-      console.log("teste2",error)
-      this.erro = error
-      this.loader = false
+    this.eventsProvider.putEvent( this.formulario.value,this.activedRoute.snapshot.paramMap.get('id')).then((result: any) => {
+      // this.event =  result
+       console.log(result)
+     //  this.authLogin.setSession(result.token, result.expires_at)
+       //this.filteredEvents =  result
+       this.sucesso=result
+      // this.loader = false
+       Swal.fire({
+         position: 'top-end',
+         icon: 'success',
+         title: 'Evento Editado com Sucesso',
+         showConfirmButton: false,
+         timer: 1500
+       }).then(ant => {
+        // this.router.navigate(["/"]);
+       })
+     }).catch(error => {
+       console.log("teste2",error)
+       this.erro = error
+       this.loader = false
 
-     // this.snackBar.openLong('Não foi possível modificar: O período de trabalho é inválido!', 'erro');
+      // this.snackBar.openLong('Não foi possível modificar: O período de trabalho é inválido!', 'erro');
 
-    })*/
+     })
   }
 }

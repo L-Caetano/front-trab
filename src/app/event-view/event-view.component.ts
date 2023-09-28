@@ -41,7 +41,9 @@ export class EventViewComponent implements OnInit {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        Swal.fire('Deletado!', '', 'success')
+        this.eventsProvider.deleteEvent(this.activedRoute.snapshot.paramMap.get('id')).then(result =>{
+                  Swal.fire('Deletado!', '', 'success')
+        })
       }
     })
   }
