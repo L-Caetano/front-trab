@@ -10,7 +10,7 @@ export class EventsProvider {
     apiEvent = '/atividades'
     headers = new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.get('token')}`
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
       })
        requestOptions = { headers: this.headers };
     ngOnInit() {
