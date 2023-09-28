@@ -8,12 +8,13 @@ export class EventsProvider {
     constructor(public http: HttpClient,) {
     }
     apiEvent = '/atividades'
-    headers
-    ngOnInit() {
-       this.headers = new HttpHeaders({
+    headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.get('token')}`
-      });
+      })
+       requestOptions = { headers: this.headers };
+    ngOnInit() {
+
     }
     getEvents(){
         return new Promise((resolve, reject) => {
@@ -47,7 +48,7 @@ export class EventsProvider {
   deleteEvent(id){
     return new Promise((resolve, reject) => {
       console.log(environment.api + this.apiEvent)
-      this.http.delete(environment.api +   this.apiEvent+ "/destroy/"+ id,this.headers)
+      this.http.delete(environment.api +   this.apiEvent+ "/destroy/"+ id, this.requestOptions)
         .subscribe((result) => {
           console.log(result)
             resolve(result);
@@ -59,9 +60,10 @@ export class EventsProvider {
     });
   }
   postEvent(body){
+    console.log('shit',this.headers)
     return new Promise((resolve, reject) => {
       console.log(environment.api, body )
-      this.http.post(environment.api + this.apiEvent+'/store', body,this.headers)
+      this.http.post(environment.api + this.apiEvent+'/store', body,this.requestOptions)
         .subscribe((result) => {
           console.log(result)
             resolve(result);
@@ -75,7 +77,7 @@ export class EventsProvider {
   putEvent(body,id){
     return new Promise((resolve, reject) => {
       console.log(environment.api, body )
-      this.http.post(environment.api + this.apiEvent+'/update/'+id, body,this.headers)
+      this.http.post(environment.api + this.apiEvent+'/update/'+id, body,this.requestOptions)
         .subscribe((result) => {
           console.log(result)
             resolve(result);
