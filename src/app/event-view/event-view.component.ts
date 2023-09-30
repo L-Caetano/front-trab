@@ -14,6 +14,12 @@ import { authLogin } from 'src/providers/authLogin'
 })
 export class EventViewComponent implements OnInit {
 
+  public getSafehtml(html: string ) {
+    var txt = document.createElement('textarea');
+    txt.innerHTML = html
+    return txt.value;
+  }
+
   constructor(private activedRoute: ActivatedRoute,public eventsProvider: EventsProvider, private router: Router, public authLogin: authLogin) { }
   public loader = true
   public event
@@ -22,7 +28,9 @@ export class EventViewComponent implements OnInit {
   console.log(id)
   this.eventsProvider.getEvent(id).then((result: any) => {
     this.event =  result
-    console.log(this.event)
+    this.event.descricao = new DOMParser().parseFromString(this.event.descricao, "text/html").documentElement.textContent;
+    console.log(this.event.descricao)
+    // console.log(this.event)
     //this.filteredEvents =  result
     this.loader=false;
   })

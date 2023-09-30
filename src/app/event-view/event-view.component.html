@@ -18,7 +18,7 @@
 <div  *ngIf="loader != true">
 <h6>
 <b>Descrição:</b> <br> {{event.descricao}} <br>
-<b>Local:</b> <br> {{event.local}} <br>
+<b>Local:</b> <br> <p innerHTML={{event.local}}></p> <br>
 </h6>
 <div class="col"
 ><button class="btn btn-primary">Participar</button>
