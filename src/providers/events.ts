@@ -77,7 +77,7 @@ export class EventsProvider {
   putEvent(body,id){
     return new Promise((resolve, reject) => {
       console.log(environment.api, body )
-      this.http.post(environment.api + this.apiEvent+'/update/'+id, body,this.requestOptions)
+      this.http.put(environment.api + this.apiEvent+'/update/'+id, body,this.requestOptions)
         .subscribe((result) => {
           console.log(result)
             resolve(result);

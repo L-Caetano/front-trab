@@ -14,12 +14,6 @@ import { authLogin } from 'src/providers/authLogin'
 })
 export class EventViewComponent implements OnInit {
 
-  public getSafehtml(html: string ) {
-    var txt = document.createElement('textarea');
-    txt.innerHTML = html
-    return txt.value;
-  }
-
   constructor(private activedRoute: ActivatedRoute,public eventsProvider: EventsProvider, private router: Router, public authLogin: authLogin) { }
   public loader = true
   public event
@@ -51,6 +45,7 @@ export class EventViewComponent implements OnInit {
       if (result.isConfirmed) {
         this.eventsProvider.deleteEvent(this.activedRoute.snapshot.paramMap.get('id')).then(result =>{
                   Swal.fire('Deletado!', '', 'success')
+                  this.router.navigate(['/'])
         })
       }
     })

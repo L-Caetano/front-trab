@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { EventsProvider } from 'src/providers/events'
 import Swal from 'sweetalert2'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-editar-evento',
@@ -11,7 +12,7 @@ import Swal from 'sweetalert2'
 })
 export class EditarEventoComponent implements OnInit {
 
-  constructor(private activedRoute: ActivatedRoute,public eventsProvider: EventsProvider) { }
+  constructor(private activedRoute: ActivatedRoute,public eventsProvider: EventsProvider, private router: Router) { }
   formulario
   loader = false
   erro = null
@@ -58,7 +59,7 @@ export class EditarEventoComponent implements OnInit {
          showConfirmButton: false,
          timer: 1500
        }).then(ant => {
-        // this.router.navigate(["/"]);
+          this.router.navigate(["/eventView/"+this.activedRoute.snapshot.paramMap.get('id')]);
        })
      }).catch(error => {
        console.log("teste2",error)

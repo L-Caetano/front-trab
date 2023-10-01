@@ -22,14 +22,14 @@
   </div>
 
   <div class="card" style="width: 18rem; padding: 5px 5px 5px 5px;" *ngFor="let item of filteredEvents" >
-  <img class="card-img-top" src={{item.imagem_url}} alt="Card image cap">
-  <div class="card-body">
-    <h4 class="card-title">{{ item.nome }}</h4>
-    <h5>{{ item.data | date }} </h5>
-  </div>
+    <img class="card-img-top" src={{item.imagem_url}} alt="Card image cap">
+    <div class="card-body">
+      <h4 class="card-title">{{ item.nome }}</h4>
+      <h5>{{ item.data | date }} </h5>
+    </div>
     <a  (click)="routToEvent(item.id)" class="btn btn-primary">Acessar</a>
 
-</div>
+  </div>
 <div class="row">
   <div class="col">
 <div class="alert alert-secondary" *ngIf="filteredEvents.length == 0 && loader == false" role="alert">
