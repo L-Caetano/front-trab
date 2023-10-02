@@ -17,6 +17,8 @@ export class EventViewComponent implements OnInit {
   constructor(private activedRoute: ActivatedRoute,public eventsProvider: EventsProvider, private router: Router, public authLogin: authLogin) { }
   public loader = true
   public event
+  error = null
+  sucess= null
   ngOnInit() {
   let id =  this.activedRoute.snapshot.paramMap.get('id');
   console.log(id)
@@ -28,6 +30,16 @@ export class EventViewComponent implements OnInit {
     //this.filteredEvents =  result
     this.loader=false;
   })
+  }
+
+
+  participar(){
+    this.eventsProvider. postParticipar(this.activedRoute.snapshot.paramMap.get('id')).then((result: any) => {
+      this.event.participantes =  this.event.participantes+ 1
+      this.sucess = result.message
+    }).catch(error => {
+this.error = error.error
+    })
   }
   editar(){
     let id =  this.activedRoute.snapshot.paramMap.get('id');
@@ -44,8 +56,19 @@ export class EventViewComponent implements OnInit {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         this.eventsProvider.deleteEvent(this.activedRoute.snapshot.paramMap.get('id')).then(result =>{
-                  Swal.fire('Deletado!', '', 'success')
-                  this.router.navigate(['/'])
+
+                  Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Deletado',
+                    showConfirmButton: false,
+                    timer: 1500
+                  }).then(ant => {
+                    this.router.navigate(["/"]);
+                  })
+
+        }).catch( error => {
+
         })
       }
     })

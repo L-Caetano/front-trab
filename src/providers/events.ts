@@ -88,4 +88,18 @@ export class EventsProvider {
 
     });
   }
+  postParticipar(id){
+    return new Promise((resolve, reject) => {
+   //   console.log(environment.api, body )
+      this.http.post(environment.api + this.apiEvent+'/'+id+'/participar', { },this.requestOptions)
+        .subscribe((result) => {
+          console.log(result)
+            resolve(result);
+          },
+          (error) => {
+            reject(error);
+          });
+
+    });
+  }
 }

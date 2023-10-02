@@ -21,7 +21,10 @@
 <b>Local:</b> <br> <p innerHTML={{event.local}}></p> <br>
 </h6>
 <div class="col"
-><button class="btn btn-primary">Participar</button>
+>Participantes: {{ event.participantes}} - <button class="btn btn-primary" (click)="participar()">Participar</button>
+<div class="alert alert-danger" role="alert" *ngIf="error">
+ {{error.error}}
+</div>
  </div>
 <hr>
 <h6><b>Tipo:</b> {{ event.tipo}} - <b>Criado em:</b> {{ event.created_at | date: 'short'}}

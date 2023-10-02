@@ -10,7 +10,7 @@ import Swal from 'sweetalert2'
 })
 export class CriarEventoComponent implements OnInit {
 
-  constructor(public eventsProvider: EventsProvider,) { }
+  constructor(public eventsProvider: EventsProvider, private router: Router, ) { }
   formulario
   loader = false
   erro = null
@@ -45,7 +45,7 @@ export class CriarEventoComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       }).then(ant => {
-       // this.router.navigate(["/"]);
+       this.router.navigate(["/"]);
       })
     }).catch(error => {
       console.log("teste2",error)
