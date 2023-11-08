@@ -1,0 +1,24 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Cargo</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of arrayTeste">
+    
+        <th scope="row">2</th>
+        <td>{{item.email}}</td>
+        <td><h4 ><span class="badge badge-primary" style="background-color: blue;" *ngIf="item.isAdmin">Admin</span><span class="badge badge-primary"  *ngIf="item.isModerator" style="background-color: blue;">Moderador</span><span style="background-color: blue;" class="badge badge-primary" *ngIf="item.isUser">User</span></h4></td>
+        <td> 
+            <button class="btn btn-primary"  (click)="promover(item.id)">Promover</button>
+            <button class="btn btn-primary" *ngIf="item.isAdmin || item.isModerator"  (click)="demote(item.id)">Demote</button>
+            <button class="btn btn-danger"  (click)="excluir(item.id)">Excluir Conta</button></td>
+       
+      </tr>
+
+    </tbody>
+  </table>

@@ -51,10 +51,18 @@
                   <option [value]="true">Sim</option>
                   <option [value]="false">Não</option>
                 </select>
-                <input  class="form-control">
+                  
               </div>
           </div>
             <div class="col-3"></div>
+                </div>
+                <div class="row">
+                  <div class="col-3"></div>
+                  <div class="col-3 form-group" >
+                    <label for="exampleInputPassword1">Imagem</label>
+                    <input class="form-control" type="file"    (change)="onFileSelected($event)" >
+                  </div>
+                  <div class="col-3"></div>
                 </div>
               <br>
               <button type="submit" (click)="submited()" *ngIf="loader == false" class="btn btn-primary">Criar</button>

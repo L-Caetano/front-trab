@@ -6,6 +6,8 @@ import { CadastroComponent } from './login/cadastro/cadastro.component';
 import { LoginComponent } from './login/login/login.component';
 import { CriarEventoComponent } from './eventos/criar-evento/criar-evento.component';
 import { EditarEventoComponent } from './eventos/editar-evento/editar-evento.component';
+import { ManageUsersComponent } from './manage-users/manage-users.component';
+import { ViewMeusEventosComponent } from './view-meus-eventos/view-meus-eventos.component';
 
 
 const routes: Routes = [
@@ -29,6 +31,12 @@ const routes: Routes = [
   ,
   {
     path: 'editarEvento/:id', component: EditarEventoComponent
+  } ,
+  {
+    path: 'manageUsers', component: ManageUsersComponent
+  },
+  {
+    path: 'meusEventos', component: ViewMeusEventosComponent
   }
 ];
 

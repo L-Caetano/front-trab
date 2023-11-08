@@ -12,6 +12,7 @@ export class CriarEventoComponent implements OnInit {
 
   constructor(public eventsProvider: EventsProvider, private router: Router, ) { }
   formulario
+  fileData:FormData = new FormData();
   loader = false
   erro = null
   sucesso = null
@@ -23,7 +24,7 @@ export class CriarEventoComponent implements OnInit {
       local: new FormControl(''),
       tipo: new FormControl(''),
       livre: new FormControl(''),
-
+      //imagem: new FormData()
     })
   }
   submited(){
@@ -31,7 +32,18 @@ export class CriarEventoComponent implements OnInit {
     this.sucesso = null
     this.loader=true
     console.log(this.formulario.value)
-     this.eventsProvider.postEvent( this.formulario.value).then((result: any) => {
+    let obj = {
+      nome: this.formulario.value.nome,
+      descricao: this.formulario.value.descricao,
+      data:this.formulario.value.data,
+      local:this.formulario.value.local,
+      tipo: this.formulario.value.tipo,
+      livre: this.formulario.value.livre,
+      imagem: this.fileData
+    }
+  //  this.formulario.value.imagem =  this.fileData
+    console.log(obj)
+     this.eventsProvider.postEvent(obj).then((result: any) => {
      // this.event =  result
       console.log(result)
     //  this.authLogin.setSession(result.token, result.expires_at)
@@ -55,5 +67,18 @@ export class CriarEventoComponent implements OnInit {
      // this.snackBar.openLong('Não foi possível modificar: O período de trabalho é inválido!', 'erro');
 
     })
+  }
+  onFileSelected(event) {
+    let fileList: FileList = event.target.files;
+
+    if (fileList.length < 1) {
+      return;
+    }
+    
+    let file: File = fileList[0];
+   
+    this.fileData.append('uploadFile', file, file.name)
+
+    console.log(this.fileData )
   }
 }

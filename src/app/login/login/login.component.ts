@@ -32,10 +32,14 @@ export class LoginComponent implements OnInit {
     this.userProvider.postLogUser( this.formulario.value).then((result: any) => {
      // this.event =  result
       console.log(result)
+    
       this.authLogin.setSession(result.token, result.expires_at)
       //this.filteredEvents =  result
       this.sucesso=result
-     // this.loader = false
+     // this.loader = false  
+     this.userProvider. getAuth().then(result =>{
+        
+      })
       Swal.fire({
         position: 'top-end',
         icon: 'success',

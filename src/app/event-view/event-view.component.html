@@ -17,8 +17,9 @@
 </h6>
 <div  *ngIf="loader != true">
 <h6>
+  <img src={{event.imagem_url}} style="max-height: 200px;"><br>
 <b>Descrição:</b> <br> {{event.descricao}} <br>
-<b>Local:</b> <br> <p innerHTML={{event.local}}></p> <br>
+<b>Local:</b> <br> <p innerHTML={{event.imagem_url}}></p> <br>
 </h6>
 <div class="col"
 >Participantes: {{ event.participantes}} - <button class="btn btn-primary" (click)="participar()">Participar</button>

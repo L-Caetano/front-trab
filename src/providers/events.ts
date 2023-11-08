@@ -30,6 +30,20 @@ export class EventsProvider {
 
           });
     }
+    getEventsMyEvents(){
+      return new Promise((resolve, reject) => {
+          console.log(environment.api + this.apiEvent)
+          this.http.get(environment.api + this.apiEvent+"/index", this.requestOptions)
+            .subscribe((result) => {
+              console.log(result)
+                resolve(result);
+              },
+              (error) => {    
+                reject(error);
+              });
+
+        });
+  }
 
     getEvent(id){
       return new Promise((resolve, reject) => {
@@ -60,6 +74,9 @@ export class EventsProvider {
     });
   }
   postEvent(body){
+      this.headers.append('Content-Type', 'multipart/form-data');
+    this.headers.append('Accept', 'application/json');
+    this.requestOptions = { headers: this.headers };
     console.log('shit',this.headers)
     return new Promise((resolve, reject) => {
       console.log(environment.api, body )
@@ -75,6 +92,7 @@ export class EventsProvider {
     });
   }
   putEvent(body,id){
+  
     return new Promise((resolve, reject) => {
       console.log(environment.api, body )
       this.http.put(environment.api + this.apiEvent+'/update/'+id, body,this.requestOptions)

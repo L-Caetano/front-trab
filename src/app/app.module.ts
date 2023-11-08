@@ -18,6 +18,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'; //
 import { authLogin } from 'src/providers/authLogin';
 import { CriarEventoComponent } from './eventos/criar-evento/criar-evento.component';
 import { EditarEventoComponent } from './eventos/editar-evento/editar-evento.component';
+import { ManageUsersComponent } from './manage-users/manage-users.component';
+import { ViewMeusEventosComponent } from './view-meus-eventos/view-meus-eventos.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,9 @@ import { EditarEventoComponent } from './eventos/editar-evento/editar-evento.com
     LoginComponent,
     CadastroComponent,
     CriarEventoComponent,
-    EditarEventoComponent
+    EditarEventoComponent,
+    ManageUsersComponent,
+    ViewMeusEventosComponent
   ],
   entryComponents: [
     EventViewComponent

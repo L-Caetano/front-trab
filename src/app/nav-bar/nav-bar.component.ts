@@ -9,8 +9,10 @@ import { authLogin } from 'src/providers/authLogin';
 export class NavBarComponent implements OnInit {
 
   constructor(public authLogin: authLogin) { }
-
+public role
   ngOnInit() {
+   this.role = localStorage.getItem('role')
+   console.log(this.role)
   }
 
 }
