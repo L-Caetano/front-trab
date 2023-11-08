@@ -24,7 +24,7 @@ export class UserProvider {
                 (error) => {
                   reject(error);
                 });
-      
+
           });
     }
     postLogUser(body){
@@ -38,7 +38,7 @@ export class UserProvider {
                 (error) => {
                   reject(error);
                 });
-      
+
           });
     }
     getAuth(){
@@ -57,7 +57,7 @@ export class UserProvider {
               (error) => {
                 reject(error);
               });
-    
+
         });
   }
     getUsers(){
@@ -71,7 +71,7 @@ export class UserProvider {
               (error) => {
                 reject(error);
               });
-    
+
         });
   }
   deleteUser(id){
@@ -85,14 +85,14 @@ export class UserProvider {
             (error) => {
               reject(error);
             });
-  
+
       });
 }
 promoteUser(id){
-  
+
   return new Promise((resolve, reject) => {
     //console.log(environment.api, body )
-    this.http.put(environment.api +  '/admin/promote/'+id, this.requestOptions)
+    this.http.put(environment.api +  '/admin/promote/'+id, null, this.requestOptions)
       .subscribe((result) => {
         console.log(result)
           resolve(result);
@@ -106,7 +106,7 @@ promoteUser(id){
 demoteUser(id){
   return new Promise((resolve, reject) => {
     //console.log(environment.api, body )
-    this.http.put(environment.api +  '/admin/demote/'+id, this.requestOptions)
+    this.http.put(environment.api +  '/admin/demote/'+id, null, this.requestOptions)
       .subscribe((result) => {
         console.log(result)
           resolve(result);

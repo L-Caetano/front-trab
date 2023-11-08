@@ -18,7 +18,7 @@ export class ManageUsersComponent implements OnInit {
   }
   getUser(){
         this.userProvider.getUsers().then((result:any) =>{
-       this.arrayTeste=result.data  
+       this.arrayTeste=result.data
          this.loader=false;
     })
   }
@@ -75,7 +75,7 @@ export class ManageUsersComponent implements OnInit {
       denyButtonText: `Cancelar`,
     }).then((result) => {
       if (result.isConfirmed) {
-    this.userProvider.promoteUser(id).then(result => {
+    this.userProvider.demoteUser(id).then(result => {
       this.getUser()
       Swal.fire({
         position: 'top-end',
