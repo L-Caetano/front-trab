@@ -24,7 +24,7 @@ export class EventViewComponent implements OnInit {
   console.log(id)
   this.eventsProvider.getEvent(id).then((result: any) => {
     this.event =  result
-    this.event.descricao = new DOMParser().parseFromString(this.event.descricao, "text/html").documentElement.textContent;
+
     console.log(this.event.descricao)
     // console.log(this.event)
     //this.filteredEvents =  result

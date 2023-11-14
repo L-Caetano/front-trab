@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EventsProvider } from 'src/providers/events';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
@@ -12,7 +12,6 @@ export class CriarEventoComponent implements OnInit {
 
   constructor(public eventsProvider: EventsProvider, private router: Router, ) { }
   formulario
-  fileData:FormData = new FormData();
   loader = false
   erro = null
   sucesso = null
@@ -24,7 +23,7 @@ export class CriarEventoComponent implements OnInit {
       local: new FormControl(''),
       tipo: new FormControl(''),
       livre: new FormControl(''),
-      //imagem: new FormData()
+      imagem: new FormControl(null)
     })
   }
   submited(){
@@ -39,7 +38,7 @@ export class CriarEventoComponent implements OnInit {
       local:this.formulario.value.local,
       tipo: this.formulario.value.tipo,
       livre: this.formulario.value.livre,
-      imagem: this.fileData
+      imagem: this.formulario.value.imagem
     }
   //  this.formulario.value.imagem =  this.fileData
     console.log(obj)
@@ -69,16 +68,24 @@ export class CriarEventoComponent implements OnInit {
     })
   }
   onFileSelected(event) {
-    let fileList: FileList = event.target.files;
+    const file: File = event.target.files[0];
+    const reader = new FileReader();
 
-    if (fileList.length < 1) {
-      return;
+    if (file) {
+      this.formulario.patchValue({
+        imagem: file // Define o valor do controle de imagem com o arquivo selecionado
+      });
+      reader.onload = this.handleReaderLoaded.bind(this);
+
+      reader.readAsBinaryString(file);
     }
-    
-    let file: File = fileList[0];
-   
-    this.fileData.append('uploadFile', file, file.name)
+  }
 
-    console.log(this.fileData )
+  handleReaderLoaded(e) {
+    let binaryString = e.target.result;
+    this.formulario.patchValue({
+      imagem: btoa(binaryString) // Converte para base64
+    });
+    console.log(this.formulario.value.imagem);
   }
 }

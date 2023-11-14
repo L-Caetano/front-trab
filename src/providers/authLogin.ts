@@ -15,10 +15,11 @@ export class authLogin {
 
 	private router: Router;
 
-    setSession(token, expires_at){
+    setSession(token, expires_at, role){
       console.log(token, expires_at)
       localStorage.setItem('token',token );
       localStorage.setItem('expires_at',expires_at );
+      localStorage.setItem('role',role );
     }
     isLogged(){
       return  localStorage.getItem('token')!=null
@@ -26,6 +27,10 @@ export class authLogin {
     logout(){
       localStorage.removeItem('token' );
       localStorage.removeItem('expires_at' );
+      localStorage.removeItem('role' );
+    }
+    getRole(){
+      return localStorage.getItem('role')
     }
 
 }

@@ -1,36 +1,42 @@
 <body>
 
   <div class="row" style=" text-align: center; padding-top: 2%;">
-<div class="row">
- <h2> {{ event.nome }}</h2> </div>
- <div class="col" *ngIf="authLogin.isLogged()"><button class="btn btn-primary" (click)="editar()">Editar Evento</button>&nbsp;
-  <button class="btn btn-danger"  (click)="excluir()">Excluir Evento</button></div>
+    <div class="row">
+      <h2> {{ event.nome }}</h2>
+    </div>
+    <div class="col" *ngIf="authLogin.isLogged()"><button class="btn btn-primary" (click)="editar()">Editar
+        Evento</button>&nbsp;
+      <button class="btn btn-danger" (click)="excluir()">Excluir Evento</button>
+    </div>
 
 
- <h4> {{ event.data | date: 'short'}}
-</h4>
-<hr>
-<h6  *ngIf="loader == true">
-   <div class="spinner-border" role="status" *ngIf="loader == true" style="justify-content: center;">
-    <span class="sr-only">Loading...</span>
+    <h4> {{ event.data | date: 'short'}}
+    </h4>
+    <hr>
+    <h6 *ngIf="loader == true">
+      <div class="spinner-border" role="status" *ngIf="loader == true" style="justify-content: center;">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </h6>
+    <div *ngIf="loader != true">
+      <h6>
+        <img src={{event.imagem_url}} style="max-height: 200px;"><br>
+
+        <hr>
+        <h6>
+          <b>Tipo:</b> {{ event.tipo}} - <b>Criado em:</b> {{ event.created_at | date: 'short'}} <b>Local:
+          </b>{{event.local}}
+        </h6>
+        <hr>
+        <b>Descrição:</b> <br>
+        <div id="descricao" innerHTML={{event.descricao}}></div><br>
+      </h6>
+      <div class="col">Participantes: {{ event.participantes}} - <button class="btn btn-primary"
+          (click)="participar()">Participar</button>
+        <div class="alert alert-danger" role="alert" *ngIf="error">
+          {{error.error}}
+        </div>
+      </div>
+    </div>
   </div>
-</h6>
-<div  *ngIf="loader != true">
-<h6>
-  <img src={{event.imagem_url}} style="max-height: 200px;"><br>
-<b>Descrição:</b> <br> {{event.descricao}} <br>
-<b>Local:</b> <br> <p innerHTML={{event.imagem_url}}></p> <br>
-</h6>
-<div class="col"
->Participantes: {{ event.participantes}} - <button class="btn btn-primary" (click)="participar()">Participar</button>
-<div class="alert alert-danger" role="alert" *ngIf="error">
- {{error.error}}
-</div>
- </div>
-<hr>
-<h6><b>Tipo:</b> {{ event.tipo}} - <b>Criado em:</b> {{ event.created_at | date: 'short'}}
- </h6>
-</div>
-</div>
-
 </body>

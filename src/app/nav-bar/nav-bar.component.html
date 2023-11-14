@@ -11,7 +11,7 @@
       <li class="nav-item active">
         <a class="nav-link" href="#">Home </a>
       </li>
-      <li class="nav-item" *ngIf="authLogin.isLogged()">
+      <li class="nav-item" *ngIf="authLogin.isLogged() && authLogin.getRole() != 'USER'">
         <a class="nav-link" href="/criarEvento">
         Cadastrar Evento
        </a>
@@ -31,18 +31,18 @@
         Logout
        </a>
    </li>
-   <li class="nav-item" *ngIf="authLogin.isLogged() && this.role == 'MODERATOR'">
+   <li class="nav-item" *ngIf="authLogin.isLogged() && authLogin.getRole() == 'MODERATOR'">
     <a class="nav-link"   href="/meusEventos">
     Meus Eventos
    </a>
 </li>
-<li class="nav-item" *ngIf="authLogin.isLogged() && this.role == 'ADMIN'
+<li class="nav-item" *ngIf="authLogin.isLogged() && authLogin.getRole() == 'ADMIN'
 ">
   <a class="nav-link"   href="/manageUsers">
       Gerenciar Usuarios
   </a>
 </li>
- 
+
 
     </ul>
   </div>

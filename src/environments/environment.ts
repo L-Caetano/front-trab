@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-//  api: 'http://127.0.0.1:3333'
-  api: 'https://campus360-api.onrender.com'
+ api: 'http://127.0.0.1:3333'
+  // api: 'https://campus360-api.onrender.com'
 
 };
 

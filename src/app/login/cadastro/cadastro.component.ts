@@ -30,14 +30,14 @@ export class CadastroComponent implements OnInit {
     this.sucesso = null
     this.loader=true
     console.log(this.formulario.value)
-    this.userProvider.postCreateUser( this.formulario.value).then((result: any) => {
+    this.userProvider.postCreateUser( this.formulario.value).then(async (result: any) => {
      // this.event =  result
       console.log("teste",result)
       this.sucesso=result
         this.loader = false
       //this.filteredEvents =  result
       //this.snackBar.openLong('Período de trabalho atualizado!', 'success');
-      this.authLogin.setSession(result.token, result.expires_at)
+      await this.authLogin.setSession(result.token, result.expires_at,result.role)
       Swal.fire({
         position: 'top-end',
         icon: 'success',
