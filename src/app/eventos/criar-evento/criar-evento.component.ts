@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EventsProvider } from 'src/providers/events';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import Quill from 'quill';
 @Component({
   selector: 'app-criar-evento',
   templateUrl: './criar-evento.component.html',
@@ -18,22 +19,23 @@ export class CriarEventoComponent implements OnInit {
   ngOnInit() {
     this.formulario = new FormGroup({
       nome: new FormControl(''),
-      descricao: new FormControl(''),
       data: new FormControl(''),
       local: new FormControl(''),
       tipo: new FormControl(''),
       livre: new FormControl(''),
       imagem: new FormControl(null)
     })
+    let editor = new Quill('#editor', {theme: 'snow'});
   }
   submited(){
     this.erro = null
     this.sucesso = null
     this.loader=true
     console.log(this.formulario.value)
+    let editor = new Quill('#editor');
     let obj = {
       nome: this.formulario.value.nome,
-      descricao: this.formulario.value.descricao,
+      descricao: editor.root.innerHTML,
       data:this.formulario.value.data,
       local:this.formulario.value.local,
       tipo: this.formulario.value.tipo,
